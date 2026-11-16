@@ -1,0 +1,15 @@
+<x-app-layout>
+    <div class="mb-6"><p class="text-sm font-medium text-blue-700">Access management</p><h1 class="mt-1 text-2xl font-bold">Staff & parents</h1><p class="mt-1 text-sm text-slate-500">Create teacher and guardian portal accounts. Public registration is limited to student accounts.</p></div>
+    <section class="card mb-6"><h2 class="font-bold">Create account</h2><form method="POST" action="{{ route('users.store') }}" class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">@csrf
+        <div><label class="label">Full name</label><input class="field" name="name" required></div>
+        <div><label class="label">Email</label><input class="field" type="email" name="email" required></div>
+        <div><label class="label">Phone number</label><input class="field" type="tel" name="phone" required></div>
+        <div><label class="label">Role</label><select class="field" name="role"><option value="teacher">Teacher</option><option value="parent">Parent / guardian</option></select></div>
+        <div><label class="label">Temporary password</label><input class="field" type="password" name="password" minlength="8" required></div>
+        <div class="sm:col-span-2 lg:col-span-5"><button class="btn-primary">Create account</button></div>
+    </form></section>
+    <section class="card overflow-hidden !p-0"><div class="overflow-x-auto"><table class="w-full"><thead><tr class="table-head"><th class="px-4 py-3">Name</th><th class="px-4 py-3">Email</th><th class="px-4 py-3">Phone</th><th class="px-4 py-3">Role</th><th class="px-4 py-3">Update account</th><th class="px-4 py-3"></th></tr></thead><tbody class="divide-y divide-slate-100">
+        @forelse($users as $user)<tr><td class="table-cell font-semibold">{{ $user->name }}</td><td class="table-cell">{{ $user->email }}</td><td class="table-cell">{{ $user->phone }}</td><td class="table-cell capitalize">{{ $user->role }}</td><td class="table-cell"><form method="POST" action="{{ route('users.update', $user) }}" class="flex flex-wrap gap-2">@csrf @method('PUT')<input class="field min-w-28" name="name" value="{{ $user->name }}" required><input class="field min-w-40" type="email" name="email" value="{{ $user->email }}" required><input class="field min-w-32" name="phone" value="{{ $user->phone }}" required><select class="field w-32" name="role"><option value="teacher" @selected($user->role === 'teacher')>Teacher</option><option value="parent" @selected($user->role === 'parent')>Parent</option></select><button class="btn-secondary">Save</button></form></td><td class="table-cell"><form method="POST" action="{{ route('users.destroy', $user) }}" onsubmit="return confirm('Delete this account?')">@csrf @method('DELETE')<button class="font-semibold text-rose-600">Delete</button></form></td></tr>
+        @empty<tr><td colspan="6" class="px-4 py-8 text-center text-sm text-slate-500">No staff or parent accounts yet.</td></tr>@endforelse
+    </tbody></table></div><div class="border-t border-slate-100 px-5 py-4">{{ $users->links() }}</div></section>
+</x-app-layout>
