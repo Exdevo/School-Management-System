@@ -1,7 +1,6 @@
 # School Management System
 
-![image alt](<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/55fbbd35-ec15-4137-8c0f-8ac60764ba8e" />
-)
+![image alt](https://github.com/Exdevo/School-Management-System/blob/675a425852ad5a30312a0c6402006ad7f47418be/screenshot-2026-11-17_13-51-42-chromium.png)
 
 A lightweight student, fee, assessment, and attendance portal for small schools and colleges in Kenya.
 
