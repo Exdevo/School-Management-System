@@ -1,5 +1,8 @@
 # School Management System
 
+![Uploading image.png…](<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/55fbbd35-ec15-4137-8c0f-8ac60764ba8e" />
+)
+
 A lightweight student, fee, assessment, and attendance portal for small schools and colleges in Kenya.
 
 ## Stack
